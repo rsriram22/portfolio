@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* @import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap'); */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.italiana-regular {
+    font-family: "Italiana", serif;
+    font-weight: 400;
+    font-style: normal;
+    /* letter-spacing: 2px; */
+  }
+
+  a.relative::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;  /* Adjust the distance of the line */
+    left: 0;
+    width: 0;
+    height: 2px;  /* Line thickness */
+    background-color: white;  /* Line color */
+    transition: width 0.3s ease-in-out;  /* Animation for the underline width */
+  }
+  
+  a.relative.group:hover::after {
+    width: 100%;  /* Line expands to full width on hover */
+  }
+  
