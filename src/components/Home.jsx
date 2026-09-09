@@ -16,7 +16,7 @@ const Home = () => {
   const handleNavigation = (e) => {
     e.preventDefault();
     navigate("/contact-whatsapp");
-  };  "homepage": "https://sriramportfolio.com"
+  };
 
   return (
     <div className="site-background text-white font-sans min-h-screen selection:bg-[#f0f83d] selection:text-[#0f0f3d]">
