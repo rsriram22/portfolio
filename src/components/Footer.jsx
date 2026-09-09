@@ -1,110 +1,132 @@
-import React, { useRef, useState } from "react";
-import {
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaLinkedin,
-  FaGithub,
-  FaWhatsapp,
-} from "react-icons/fa";
-import emailjs from "@emailjs/browser";
+import React, { useState } from "react";
+import { FaEnvelope, FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import { ArrowUp, ChevronRight, Code2, Database, LockKeyhole, Mail, Monitor, Send, Sparkles, Wrench, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
+import sriLogo from "../assets/sri.png";
+
+const quickLinks = [["Home", "#home"], ["About", "#about"], ["Skills", "#skills"], ["Experience", "#experience"], ["Projects", "#projects"], ["Interests", "#interests"], ["Contact", "#contact"]];
+const expertise = [[Code2, ".NET Development", "violet"], [Database, "Database & APIs", "cyan"], [Monitor, "Frontend Development", "blue"], [Sparkles, "AI Engineering", "green"], [Wrench, "Tools & DevOps", "pink"]];
+const socialLinks = [["GitHub", "https://github.com/rsriram22", FaGithub, "github"], ["LinkedIn", "https://www.linkedin.com/in/rsriram45/", FaLinkedin, "linkedin"], ["Instagram", "https://www.instagram.com/sriram_rs45/", FaInstagram, "instagram"], ["WhatsApp", "https://wa.me/+919786415970", FaWhatsapp, "whatsapp"], ["Email", "mailto:rsriram4518@gmail.com", FaEnvelope, "email"]];
 
 const Footer = () => {
-  const form = useRef();
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(null); // 'success' | 'error' | null
+  const [statusMsg, setStatusMsg] = useState("");
 
-  const sendEmail = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    if (!email || !email.trim()) return;
 
-    emailjs
-      .sendForm("service_xq9ukn6", "template_k840s3a", form.current, {
-        publicKey: "AvwTaoskwG3mgaN8A",
-      })
-      .then(
-        () => {
-          alert("Message sent successfully!");
-          form.current.reset();
-          setLoading(false);
+    setLoading(true);
+    setStatus(null);
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/rsriram4518@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
         },
-        (error) => {
-          alert("Failed to send message. Please try again.");
-          console.error("EmailJS Error:", error.text);
-          setLoading(false);
-        }
-      );
+        body: JSON.stringify({
+          email: email.trim(),
+          _subject: `New Stay Connected Subscriber: ${email.trim()}`,
+          message: `User subscribed to updates from footer: ${email.trim()}`,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+
+      const data = await response.json();
+      if (response.ok || data.success === "true" || data.success === true) {
+        setStatus("success");
+        setStatusMsg("Subscribed successfully! Thank you.");
+        setEmail("");
+      } else {
+        setStatus("error");
+        setStatusMsg("Failed to send. Please try again.");
+      }
+    } catch (err) {
+      console.error("Footer newsletter error:", err);
+      setStatus("error");
+      setStatusMsg("Failed to connect. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <>
-      <footer className="bg-gradient-to-t from-[#0f0f3d] to-gray-900 w-full text-white py-8">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {/* Logo */}
-          <div className="text-center md:text-left">
-            <img src="./src/assets/sri.png" alt="Logo" className="mx-auto md:mx-0 h-auto" />
-          </div>
+    <footer className="site-footer">
+      <div className="footer-content">
+        <div className="footer-columns">
+          <section className="footer-profile">
+            <div className="footer-avatar-wrap">
+              <img src={sriLogo} alt="Sriram" className="footer-avatar" />
+              <span className="footer-status" aria-label="Available" />
+            </div>
+            <div className="footer-profile-content">
+              <h2>Sriram</h2>
+              <p className="footer-role">Full Stack Developer <span>|</span> AI Engineer</p>
+              <p className="footer-description">Full Stack Developer &amp; AI Engineer with 1.5+ years of experience building scalable web applications, REST APIs, and AI-powered product solutions.</p>
+              <div className="footer-socials">
+                {socialLinks.map(([label, href, Icon, type]) => <a key={label} className={`footer-social ${type}`} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noopener noreferrer" : undefined} aria-label={label}><Icon /></a>)}
+              </div>
+              <p className="footer-tagline">Let&apos;s Build Something Amazing</p>
+            </div>
+          </section>
 
-          {/* Social Links */}
-          <div className="flex space-x-4 p-4 mt-16 justify-center md:justify-start">
-            <a href="https://wa.me/+919786415970" className="text-green-500 hover:text-green-800 transition-colors">
-              <FaWhatsapp size={30} />
-            </a>
-            <a href="https://www.instagram.com/sriram_rs45/" className="text-pink-600 hover:text-white transition-colors">
-              <FaInstagram size={30} />
-            </a>
-            <a href="https://www.linkedin.com/in/rsriram45/" className="text-blue-700 hover:text-blue-900 transition-colors">
-              <FaLinkedin size={30} />
-            </a>
-            <a href="https://github.com/rsriram22" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">
-              <FaGithub size={30} />
-            </a>
-          </div>
+          <section className="footer-column">
+            <h3>Quick Links</h3>
+            <nav className="footer-nav" aria-label="Footer navigation">
+              {quickLinks.map(([label, href]) => <a key={label} href={href}><ChevronRight />{label}</a>)}
+            </nav>
+          </section>
 
-          {/* Project List */}
-          <div className="text-center md:text-left">
-            <h3 className="text-lg font-semibold">Projects</h3>
-            <ul className="mt-2 space-y-1 text-gray-400">
-              <li>Mobile Service Website</li>
-              <li>Hotel Accounts Management</li>
-              <li>E-Commerce</li>
-              <li>Students Attendance System</li>
+          <section className="footer-column">
+            <h3>My Expertise</h3>
+            <ul className="footer-expertise">
+              {expertise.map(([Icon, label, color]) => <li key={label}><span className={`expertise-icon ${color}`}><Icon /></span>{label}</li>)}
             </ul>
-          </div>
+          </section>
 
-          {/* Message Input Form */}
-          <div className="text-center md:text-left">
-            <h3 className="text-lg font-semibold">Send a Message</h3>
-            <p className="text-gray-400 mt-2">Have a project in mind? Feel free to reach out and let's collaborate!</p>
-            <form ref={form} onSubmit={sendEmail} className="mt-4 flex items-center">
-              <input type="hidden" name="to_email" value="rsriram4518@gmail.com" />
+          <section className="footer-newsletter">
+            <div className="newsletter-header"><span className="newsletter-icon"><Mail /></span><div><h3>Stay Connected</h3><p>Get updates on my latest projects, tech insights and more.</p></div></div>
+            <form onSubmit={handleSubscribe} className="newsletter-form">
               <input
-                type="mail"
-                name="message"
-                placeholder="Enter your Mail here" 
-                className="px-4 py-2 w-full rounded-l-lg text-black outline-none"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
+                aria-label="Your email address"
+                placeholder="Enter your email address"
               />
-              <button
-                type="submit"
-                className="bg-red-500 px-4 py-2 rounded-r-lg"
-                disabled={loading}
-              >
-                {loading ? "Sending..." : "➤"}
+              <button type="submit" disabled={loading} style={{ cursor: loading ? "not-allowed" : "pointer" }}>
+                {loading ? (
+                  <>
+                    <Loader2 className="animate-spin" size={14} /> Sending...
+                  </>
+                ) : (
+                  <>
+                    Send <Send size={14} />
+                  </>
+                )}
               </button>
             </form>
-          </div>
+            {status === "success" && (
+              <p className="newsletter-status success"><CheckCircle size={14} /> {statusMsg}</p>
+            )}
+            {status === "error" && (
+              <p className="newsletter-status error"><AlertCircle size={14} /> {statusMsg}</p>
+            )}
+            <p className="newsletter-note"><LockKeyhole /> No spam. Just meaningful updates.</p>
+          </section>
         </div>
-      </footer>
 
-      {/* Copyright */}
-      <div className="bg-white">
-        <div className="border-t border-gray-700 py-3 text-center">
-          <p className="text-sm font-bold text-black">
-            &copy; {new Date().getFullYear()} Portfolio. All rights reserved.
-          </p>
+        <div className="footer-bottom">
+          <div className="copyright-block"><span className="copyright-icon"><Code2 /></span><div><p>© 2026 <strong>Sriram.</strong> All rights reserved.</p><small>Build. Solve. Improve. Repeat.</small></div></div>
+          <div className="footer-bottom-right"><p><span>♥</span> Built with passion for technology</p><a href="#home" className="back-to-top" aria-label="Back to top"><ArrowUp /></a></div>
         </div>
       </div>
-    </>
+    </footer>
   );
 };
 

@@ -1,25 +1,21 @@
 import React from "react";
+import gmailSvg from "../assets/gmaillogo.svg";
 
 const Contactm = () => {
-  // WhatsApp link (replace with your WhatsApp number or link)
-  const whatsappLink = "https://wa.me/+919786415970"; // Replace with your WhatsApp number
-  const emailLink = "mailto:rsriram4518@gmail.com"; // Replace with your email
+  const emailLink = "https://mail.google.com/mail/?view=cm&fs=1&to=rsriram4518@gmail.com";
 
   return (
-    // <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100 p-4">
-    //   <h2 className="text-3xl font-semibold text-center mb-8">Contact Us</h2>
-
-      <div className="flex gap-8">
-
-        {/* Email Icon */}
-        <a
-          href={emailLink}
-          className="flex items-center justify-center w-9 h-9 rounded-full shadow-lg hover:scale-150 transform transition-transform duration-500"
-        >
-          <img src="./src/assets/gmaillogo.svg" alt="gmail" />
-        </a>
-      </div>
-
+    <div className="flex gap-8">
+      <a
+        href={emailLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center w-9 h-9 rounded-full shadow-lg hover:scale-125 transform transition-transform duration-300"
+        aria-label="Google Mail"
+      >
+        <img src={gmailSvg} alt="gmail" className="w-full h-full" />
+      </a>
+    </div>
   );
 };
 

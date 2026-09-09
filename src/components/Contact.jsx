@@ -1,7 +1,7 @@
 import React from 'react'
 import Contactphone from './Contactphone'
 import Contactm from './ContactMail'
-import Contactw from '../src/assets/ContactWhatsapp'
+import Contactw from './Contactwhatsapp'
 
 const Contact1 = () => {
   return (
@@ -13,7 +13,7 @@ const Contact1 = () => {
             <li className="flex gap-4"><label className="mt-4"><strong>Phone:</strong> +91 9786415970 </label><Contactphone/></li>
             <li className="flex gap-4"><label className="mt-4"><strong>Whatsapp:</strong> +91 9786415970 </label><Contactw/></li>
             <li className="flex gap-4"><label className="mt-4"><strong>Email:</strong> rsriram4518@gmail.com</label><Contactm/></li>
-            <li><strong>Address:</strong> 37D, Sundaram Street Sivakasi</li>
+            <li><strong>Location:</strong> Coimbatore, Tamil Nadu, India</li>
           </ul>
     </div>
 </>

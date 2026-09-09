@@ -3,9 +3,10 @@ import { useInView } from "react-intersection-observer";
 
 const ScrollSectionbottom = ({ children }) => {
   const { ref, inView } = useInView({
-    triggerMany: false,  // Trigger the animation only once
-    triggerOnce:true,
-    threshold: 0.1,     // Trigger when 10% of the element is visible
+    triggerOnce: true,
+    threshold: 0.05,
+    initialInView: true,
+    fallbackInView: true,
   });
 
   return (

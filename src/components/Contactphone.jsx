@@ -1,17 +1,18 @@
-import React from 'react'
+import React from 'react';
+import { Phone } from 'lucide-react';
 
 const Contactphone = () => {
   return (
-    <div className="fill-white bg-white px-0.5 py-0.5 rounded-full  hover:scale-150 transform transition-transform duration-500">
-      {/* Email Icon */}
+    <div className="bg-white p-1 rounded-full hover:scale-125 transform transition-transform duration-300">
       <a
-          href="tel:+918344292756"
-          className="flex items-center justify-center w-9 h-9 rounded-full shadow-lg "
-        >
-          <img src="./src/assets/phone.svg" alt="gmail" />
-        </a>
+        href="tel:+919786415970"
+        className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 text-white shadow-md"
+        aria-label="Call Phone"
+      >
+        <Phone size={16} />
+      </a>
     </div>
-  )
-}
+  );
+};
 
 export default Contactphone;

@@ -6,14 +6,14 @@ import Contactw from "./components/Contactwhatsapp";
 
 function App() {
   return (
-    <div>
-      <Navbar/>
-  <Routes>
-    <Route path="/" element={<Home/>}/>
-    <Route path='contact-whatsapp' element={<Contactw/>}/>
-  </Routes>
-  </div>
-    
+    <div className="site-background min-h-screen text-white">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contact-whatsapp" element={<Contactw />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
+    </div>
   );
 }
 
