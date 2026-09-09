@@ -5,7 +5,7 @@ import { ArrowRight, Download } from "lucide-react";
 import profileImg from "../assets/Profile.png";
 import whatsappSvg from "../assets/whatsapp.svg";
 import gmailSvg from "../assets/gmaillogo.svg";
-import resumePdf from "../assets/resume.pdf";
+import resumePdf from "../assets/R. Sriram.pdf";
 
 const Hero = () => {
   const whatsappLink = "https://wa.me/+919786415970";
@@ -74,7 +74,7 @@ const Hero = () => {
 
               <a
                 href={resumePdf}
-                download="Sriram_Resume.pdf"
+                download="R. Sriram.pdf"
                 className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white py-3 px-6 rounded-full text-sm sm:text-base font-semibold transition-all hover:scale-105 border border-white/15 hover:border-white/30 backdrop-blur-sm"
               >
                 <Download size={16} />
