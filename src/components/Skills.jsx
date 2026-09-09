@@ -235,18 +235,18 @@ const Skillspage = () => {
         </div>
 
         {/* 6 Technical Skills Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
           {technicalSkills.map((item, index) => (
             <motion.div
               key={item.title}
-              className={`group relative bg-[#090f26]/80 hover:bg-[#0d1536]/90 border border-blue-500/20 ${item.glowColor} rounded-2xl p-4 sm:p-5 transition-all duration-300 shadow-xl shadow-black/30 hover:shadow-[0_0_25px_rgba(56,130,246,0.12)] flex items-center gap-4 hover:-translate-y-1 cursor-default`}
+              className={`group relative bg-[#090f26]/80 hover:bg-[#0d1536]/90 border border-blue-500/20 ${item.glowColor} rounded-2xl p-3 sm:p-5 transition-all duration-300 shadow-xl shadow-black/30 hover:shadow-[0_0_25px_rgba(56,130,246,0.12)] flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 hover:-translate-y-1 cursor-default`}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, delay: index * 0.05 }}
             >
-              {/* 78px x 78px Icon Box */}
+              {/* Icon Box - Responsive Size */}
               <div
-                className="w-[68px] h-[68px] sm:w-[78px] sm:h-[78px] rounded-[16px] shrink-0 flex items-center justify-center transition-transform group-hover:scale-105"
+                className="w-16 h-16 sm:w-[78px] sm:h-[78px] rounded-[12px] sm:rounded-[16px] shrink-0 flex items-center justify-center transition-transform group-hover:scale-105"
                 style={{
                   background: item.boxBg,
                   border: `1px solid ${item.boxBorder}`,
@@ -258,11 +258,11 @@ const Skillspage = () => {
 
               {/* Text Information */}
               <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-2 mb-1.5">
-                  <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-blue-200 transition-colors truncate">
+                <div className="flex items-start sm:items-center justify-between gap-2 mb-1">
+                  <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-blue-200 transition-colors">
                     {item.title}
                   </h4>
-                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:border-blue-400/50 group-hover:bg-blue-500/20 transition-all shrink-0">
+                  <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:border-blue-400/50 group-hover:bg-blue-500/20 transition-all shrink-0">
                     <ChevronRight size={13} />
                   </div>
                 </div>
@@ -293,18 +293,18 @@ const Skillspage = () => {
         </div>
 
         {/* 6 Interests Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
           {interests.map((item, index) => (
             <motion.div
               key={item.title}
-              className={`group relative bg-[#090f26]/80 hover:bg-[#0d1536]/90 border border-blue-500/20 ${item.glowColor} rounded-2xl p-4 sm:p-5 transition-all duration-300 shadow-xl shadow-black/30 hover:shadow-[0_0_25px_rgba(56,130,246,0.12)] flex items-center gap-4 hover:-translate-y-1 cursor-default`}
+              className={`group relative bg-[#090f26]/80 hover:bg-[#0d1536]/90 border border-blue-500/20 ${item.glowColor} rounded-2xl p-3 sm:p-5 transition-all duration-300 shadow-xl shadow-black/30 hover:shadow-[0_0_25px_rgba(56,130,246,0.12)] flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 hover:-translate-y-1 cursor-default`}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, delay: 0.2 + index * 0.05 }}
             >
-              {/* 78px x 78px Icon Box */}
+              {/* Icon Box - Responsive Size */}
               <div
-                className="w-[68px] h-[68px] sm:w-[78px] sm:h-[78px] rounded-[16px] shrink-0 flex items-center justify-center transition-transform group-hover:scale-105"
+                className="w-16 h-16 sm:w-[78px] sm:h-[78px] rounded-[12px] sm:rounded-[16px] shrink-0 flex items-center justify-center transition-transform group-hover:scale-105"
                 style={{
                   background: item.boxBg,
                   border: `1px solid ${item.boxBorder}`,
@@ -316,11 +316,11 @@ const Skillspage = () => {
 
               {/* Text Information */}
               <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-2 mb-1.5">
-                  <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-blue-200 transition-colors truncate">
+                <div className="flex items-start sm:items-center justify-between gap-2 mb-1">
+                  <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-blue-200 transition-colors">
                     {item.title}
                   </h4>
-                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:border-blue-400/50 group-hover:bg-blue-500/20 transition-all shrink-0">
+                  <div className="w-5 h-5 sm:w-7 sm:h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 group-hover:text-white group-hover:border-blue-400/50 group-hover:bg-blue-500/20 transition-all shrink-0">
                     <ChevronRight size={13} />
                   </div>
                 </div>
